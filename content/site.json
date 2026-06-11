@@ -1,0 +1,155 @@
+{
+  "instagramHandle": "tehuset",
+  "adminEmail": "tehuset@hotmail.com",
+  "contact": {
+    "email": "tehuset@hotmail.com",
+    "phone": "",
+    "address": {
+      "sv": "Karl XII:s torg 9, Kungsträdgården, Stockholm",
+      "en": "Karl XII:s torg 9, Kungsträdgården, Stockholm"
+    },
+    "socials": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/tehuset/"
+      }
+    ]
+  },
+  "navigation": [
+    {
+      "key": "contact",
+      "sv": "Kontakt",
+      "en": "Contact",
+      "href": "#footer"
+    },
+    {
+      "key": "about",
+      "sv": "Om oss",
+      "en": "About",
+      "href": "#about"
+    },
+    {
+      "key": "history",
+      "sv": "Historia",
+      "en": "History",
+      "href": "#history"
+    }
+  ],
+  "hero": {
+    "title": {
+      "sv": "Tehuset",
+      "en": "Tehuset"
+    },
+    "intro": {
+      "sv": "Tehuset står vid Karl XII:s torg, i den södra kanten av Kungsträdgården där parken möter slottet, vattnet och stadens brus.",
+      "en": "Tehuset sits by Karl XII’s square, at the southern edge of Kungsträdgården where the park meets the palace, the water and the city."
+    },
+    "images": [
+      "/assets/photography/restaurant-1.jpeg",
+      "/assets/photography/restaurant-4.jpeg",
+      "/assets/photography/restaurant-2.jpeg"
+    ]
+  },
+  "sections": {
+    "about": {
+      "title": {
+        "sv": "En plats med minne",
+        "en": "A place with memory"
+      },
+      "body": {
+        "sv": "Kungsträdgården började som kunglig trädgård och blev med tiden Stockholms vardagsrum. Vid Tehuset finns spåren kvar: Karl XII:s staty från 1868, almarna som stockholmare försvarade 1971 och den gamla vanan att slå sig ner här när staden behöver en paus.",
+        "en": "Kungsträdgården began as a royal garden and slowly became Stockholm’s public living room. Around Tehuset the traces remain: Karl XII’s statue from 1868, the elms defended by Stockholmers in 1971, and the old habit of stopping here when the city needs a pause."
+      }
+    },
+    "food": {
+      "eyebrow": {
+        "sv": "Mat",
+        "en": "Food"
+      },
+      "title": {
+        "sv": "Lunch, fika och något kallt i glaset",
+        "en": "Lunch, fika and something cold in the glass"
+      },
+      "body": {
+        "sv": "Från matiga smörgåsar och sallader till fisk, kaffe och söta saker. En enkel meny för parkdagar, lunchpauser och kvällar som dröjer sig kvar.",
+        "en": "From open sandwiches and salads to fish, coffee and sweets. A relaxed menu for park days, lunch breaks and evenings that linger."
+      }
+    },
+    "restaurant": {
+      "eyebrow": {
+        "sv": "Historia",
+        "en": "History"
+      },
+      "title": {
+        "sv": "Under almarna sedan stadens minne",
+        "en": "Under the elms, inside the city’s memory"
+      },
+      "body": {
+        "sv": "Här låg en gång Makalös, här avtäcktes Karl XII:s staty, här gick stockholmare genom sekler av parkliv, teater, serveringar och protester. Tehuset är en liten nutida fortsättning på samma sak: något varmt, något kallt, en stol i skuggan och staden alldeles nära.",
+        "en": "Makalös palace once stood here, Karl XII’s statue was unveiled here, and Stockholmers have moved through centuries of park life, theatres, cafés and protests. Tehuset is a small present-day continuation of the same thing: something warm, something cold, a chair in the shade and the city close by."
+      }
+    },
+    "merch": {
+      "title": {
+        "sv": "Merch",
+        "en": "Merch"
+      },
+      "body": {
+        "sv": "",
+        "en": ""
+      }
+    },
+    "instagram": {
+      "title": {
+        "sv": "Följ Tehuset",
+        "en": "Follow Tehuset"
+      },
+      "body": {
+        "sv": "Bilder, öppettider och ögonblick från Kungsan.",
+        "en": "Photos, opening notes and small moments from Kungsan."
+      }
+    },
+    "footer": {
+      "body": {
+        "sv": "Tehuset i Kungsträdgården. Lunch, kaffe, te och uteservering under almarna.",
+        "en": "Tehuset in Kungsträdgården. Lunch, coffee, tea and outdoor seating under the elms."
+      }
+    }
+  },
+  "history": {
+    "eyebrow": {
+      "sv": "Arkivbilder",
+      "en": "Archive images"
+    },
+    "title": {
+      "sv": "Kungsträdgården innan dagens uteserveringar",
+      "en": "Kungsträdgården before today’s terraces"
+    },
+    "body": {
+      "sv": "Bilderna är tillagda som lager, inte ersättning. De visar samma idé som Tehuset lever av i dag: parken som mötesplats, servering, promenadstråk och sommaradress mitt i Stockholm.",
+      "en": "These images are added as a layer, not as replacements. They show the same idea Tehuset lives on today: the park as meeting place, serving ground, promenade and summer address in central Stockholm."
+    },
+    "drawerText": {
+      "sv": "Tillfällig historietext för Tina CMS. Här kan Tehuset senare fylla i berättelsen om platsen, parken, almarna och huset vid Karl XII:s torg.",
+      "en": "Placeholder history copy for Tina CMS. Tehuset can later fill this with the story of the place, the park, the elms and the house by Karl XII’s square."
+    },
+    "images": [
+      {
+        "src": "/assets/history/kungstradgarden-1890-1900.jpg",
+        "caption": {
+          "sv": "Kungsträdgården omkring 1890–1900.",
+          "en": "Kungsträdgården around 1890–1900."
+        },
+        "credit": "Public domain, Wikimedia Commons / Photochrom Print Collection"
+      },
+      {
+        "src": "/assets/history/vattenserveringen-kungstradgarden-1900.jpg",
+        "caption": {
+          "sv": "Vattenserveringen i Kungsträdgården, början av 1900-talet.",
+          "en": "The water serving pavilion in Kungsträdgården, early 1900s."
+        },
+        "credit": "Vicke Andrén, public domain, Wikimedia Commons"
+      }
+    ]
+  }
+}

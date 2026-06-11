@@ -1,0 +1,16 @@
+{
+  "food": [
+    "/assets/photography/food1.jpeg",
+    "/assets/photography/food2.jpeg",
+    "/assets/photography/food3.jpeg",
+    "/assets/photography/food4.jpeg"
+  ],
+  "restaurant": [
+    "/assets/photography/restaurant-3.jpeg",
+    "/assets/photography/restaurant-4.jpeg",
+    "/assets/photography/restaurant-5.jpeg",
+    "/assets/photography/restaurant-6.jpeg",
+    "/assets/photography/restaurant-7.jpeg",
+    "/assets/photography/restaurant-8.jpeg"
+  ]
+}

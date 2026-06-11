@@ -1,0 +1,137 @@
+{
+  "language": "en",
+  "title": "Menu",
+  "background": "englishMenu",
+  "groups": [
+    {
+      "category": "Salads",
+      "items": [
+        {
+          "name": "Goat Cheese",
+          "description": "Grilled goat cheese, honey, pine nuts, beets",
+          "price": ""
+        },
+        {
+          "name": "Shrimp salad",
+          "description": "Hand-peeled shrimps, quinoa, avocado, egg, chilli mayonnaise",
+          "price": ""
+        },
+        {
+          "name": "Spicy tuna",
+          "description": "Tuna, egg, olives, sun-dried tomatoes",
+          "price": ""
+        },
+        {
+          "name": "All salads",
+          "description": "Served with vinaigrette and garlic bread",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "category": "Main course",
+      "items": [
+        {
+          "name": "Fish soup",
+          "description": "Hand-peeled shrimps, salmon, aioli, garlic bread",
+          "price": ""
+        },
+        {
+          "name": "Grilled or cold smoked salmon",
+          "description": "French potato salad, Dijon crème, summer vegetables",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "category": "Hot sandwiches",
+      "items": [
+        {
+          "name": "Croque monsieur",
+          "description": "Cheese, ham, tomatoes, chive, dijonnaise",
+          "price": ""
+        },
+        {
+          "name": "Goat cheese toast",
+          "description": "Goat cheese, honey, pine nuts",
+          "price": ""
+        },
+        {
+          "name": "Shrimp",
+          "description": "Hand-peeled shrimp, egg, mayonnaise, dill",
+          "price": ""
+        },
+        {
+          "name": "Mozzarella pesto",
+          "description": "Pesto, tomatoes, red onion, mozzarella",
+          "price": ""
+        },
+        {
+          "name": "Avocado toast",
+          "description": "Avocado, cream cheese, cherry tomatoes, chilli, parsley, olive oil",
+          "price": ""
+        },
+        {
+          "name": "Salmon toast",
+          "description": "Cold-smoked salmon, Dijon crème, roe",
+          "price": ""
+        },
+        {
+          "name": "Tuna melt",
+          "description": "Spicy tuna, tomatoes, cheese",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "category": "To drink",
+      "items": [
+        {
+          "name": "White wine",
+          "description": "Cuvée Léonce Bocquet Chablis · Hans Baer Riesling",
+          "price": ""
+        },
+        {
+          "name": "Rosé",
+          "description": "Pour la vie organic",
+          "price": ""
+        },
+        {
+          "name": "Red wine",
+          "description": "Rua Pinot Noir",
+          "price": ""
+        },
+        {
+          "name": "Cava",
+          "description": "Sogas Mascaró Brut",
+          "price": ""
+        },
+        {
+          "name": "Beer",
+          "description": "Eriksberg original · Brooklyn Lager · Carnegie 100 watt IPA · Nils Oscar non-alcoholic",
+          "price": ""
+        },
+        {
+          "name": "Juice/Soft drinks",
+          "description": "Kiviks lemonade · Saltå Kvarn juices · Ice tea · Coca-Cola · Ramlösa sparkling or still water",
+          "price": ""
+        },
+        {
+          "name": "Drinks",
+          "description": "Aperol Spritz · Hugo · Negroni · Espresso Martini · Gin and tonic · Rum and cola",
+          "price": ""
+        },
+        {
+          "name": "Coffee",
+          "description": "Espresso · Cappuccino · Latte · Cortado",
+          "price": ""
+        },
+        {
+          "name": "Tea",
+          "description": "Rooibos fig or wild berries · Earl Grey Flower · Japanese Garden · Göta kanal · China special · Ceylon",
+          "price": ""
+        }
+      ]
+    }
+  ]
+}

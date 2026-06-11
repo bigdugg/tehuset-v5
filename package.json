@@ -1,0 +1,35 @@
+{
+  "name": "tehuset-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tinacms dev -c \"next dev\"",
+    "dev:next": "next dev",
+    "build": "next build",
+    "build:pages": "GITHUB_PAGES=true next build && node scripts/patch-github-pages-assets.mjs",
+    "start": "next start",
+    "lint": "next lint",
+    "tina:build": "tinacms build",
+    "tina:dev": "tinacms dev -c \"next dev\""
+  },
+  "dependencies": {
+    "@tinacms/cli": "^2.3.1",
+    "next": "^15.0.0",
+    "nodemailer": "^6.9.16",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tinacms": "^3.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@types/nodemailer": "^6.4.16",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.15.0",
+    "eslint-config-next": "^15.0.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.6.3"
+  }
+}

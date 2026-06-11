@@ -1,0 +1,137 @@
+{
+  "language": "sv",
+  "title": "Meny",
+  "background": "swedishMenu",
+  "groups": [
+    {
+      "category": "Sallader",
+      "items": [
+        {
+          "name": "Chèvre sallad",
+          "description": "Grillad chèvre, honung, pinjenötter, rödbetor",
+          "price": ""
+        },
+        {
+          "name": "Räksallad",
+          "description": "Handskalade räkor, quinoa, avocado, ägg, chillimajonäs",
+          "price": ""
+        },
+        {
+          "name": "Spicy tuna",
+          "description": "Krämig tonfiskröra, ägg, oliver, soltorkade tomater",
+          "price": ""
+        },
+        {
+          "name": "Alla sallader",
+          "description": "Serveras med vinägrett och vitlöksbröd",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "category": "Varmrätter",
+      "items": [
+        {
+          "name": "Fisk och skaldjurssoppa",
+          "description": "Handskalade räkor, lax, aioli, vitlöksbröd",
+          "price": ""
+        },
+        {
+          "name": "Grillad lax eller kallrökt lax",
+          "description": "Varm fransk potatissallad, dijonkräm, sommarens primörer",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "category": "Varma smörgåsar",
+      "items": [
+        {
+          "name": "Croque monsieur",
+          "description": "Ost, skinka, tomat, gräslök, dijonnaise",
+          "price": ""
+        },
+        {
+          "name": "Chèvre toast",
+          "description": "Chèvre, honung, pinjenötter",
+          "price": ""
+        },
+        {
+          "name": "Räkor",
+          "description": "Handskalade räkor, ägg, majonnäs, dill",
+          "price": ""
+        },
+        {
+          "name": "Mozzarella pesto",
+          "description": "Pesto, tomat, rödlök, mozzarella",
+          "price": ""
+        },
+        {
+          "name": "Avocado toast",
+          "description": "Avocado, philadelphiaost, körsbärstomater, chilli, persilja, olivolja",
+          "price": ""
+        },
+        {
+          "name": "Lax toast",
+          "description": "Kallrökt lax, dijoncrème, rom",
+          "price": ""
+        },
+        {
+          "name": "Tonfisk",
+          "description": "Tonfiskröra, tomat, ost",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "category": "Dryck",
+      "items": [
+        {
+          "name": "Vita viner",
+          "description": "Cuvée Léonce Bocquet Chablis · Hans Baer Riesling",
+          "price": ""
+        },
+        {
+          "name": "Rosé",
+          "description": "Pour la vie organic",
+          "price": ""
+        },
+        {
+          "name": "Röda viner",
+          "description": "Rua Pinot Noir",
+          "price": ""
+        },
+        {
+          "name": "Cava",
+          "description": "Sogas Mascaró Brut",
+          "price": ""
+        },
+        {
+          "name": "Öl",
+          "description": "Eriksberg original · Brooklyn Lager · Carnegie 100 watt IPA · Nils Oscar alkoholfri",
+          "price": ""
+        },
+        {
+          "name": "Juice/Läsk",
+          "description": "Kiviks Lemonader · Saltå Kvarn juicer · Ice tea · Coca-Cola · Ramlösa",
+          "price": ""
+        },
+        {
+          "name": "Drinkar",
+          "description": "Aperol Spritz · Hugo · Negroni · Espresso Martini · Gin och tonic · Rom och cola",
+          "price": ""
+        },
+        {
+          "name": "Kaffe",
+          "description": "Espresso · Cappuccino · Kaffe latte · Cortado",
+          "price": ""
+        },
+        {
+          "name": "Te",
+          "description": "Rooibos fikon eller skogsbär · Earl Grey Flower · Japanese Garden · Göta kanal · Kina special · Ceylon",
+          "price": ""
+        }
+      ]
+    }
+  ]
+}
