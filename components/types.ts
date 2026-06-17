@@ -4,11 +4,19 @@ export type Localized = { sv: string; en: string };
 export type SiteContent = {
   instagramHandle: string;
   adminEmail: string;
-  contact: { email: string; phone?: string; address: Localized; socials: { label: string; url: string }[] };
+  contact: {
+    email: string;
+    phone?: string;
+    address: Localized;
+    socials: { label: string; url: string }[];
+    mapsUrl?: string;
+  };
   navigation: { key: string; sv: string; en: string; href: string }[];
   hero: { title: Localized; intro: Localized; images: string[] };
   sections: Record<string, { title?: Localized; eyebrow?: Localized; body: Localized }>;
   history?: { eyebrow: Localized; title: Localized; body: Localized; drawerText?: Localized; images: { src: string; caption: Localized; credit: string }[] };
+  hours?: { label: Localized; time: string };
+  illustrations?: { elms?: string; castle?: string; footer?: string };
 };
 
 export type MenuContent = {

@@ -1,5 +1,4 @@
 import site from '../content/site.json';
-import photos from '../content/photography.json';
 import menuSv from '../content/menu-sv.json';
 import menuEn from '../content/menu-en.json';
 import productsData from '../content/products.json';

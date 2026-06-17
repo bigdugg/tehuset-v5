@@ -13,7 +13,17 @@
         "label": "Instagram",
         "url": "https://www.instagram.com/tehuset/"
       }
-    ]
+    ],
+    "mapsUrl": "https://maps.app.goo.gl/UZCKNeLU5SXq3pc7A"
+  },
+  "hours": {
+    "label": { "sv": "Alla dagar", "en": "Every day" },
+    "time": "10 - sent"
+  },
+  "illustrations": {
+    "elms": "/assets/illustrations/elms-graphic2.png",
+    "castle": "/assets/illustrations/castle-graphic2.png",
+    "footer": "/assets/illustrations/strommen-graphic2-white.png"
   },
   "navigation": [
     {

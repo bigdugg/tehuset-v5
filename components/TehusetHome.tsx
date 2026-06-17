@@ -4,24 +4,14 @@ import type { Lang, MenuContent, Product, SiteContent } from './types';
 import { LanguageToggle } from './LanguageToggle';
 import { MenuPanel } from './MenuPanel';
 import { MerchCheckout } from './MerchCheckout';
+import photographyData from '../content/photography.json';
 
-const restaurantShowcaseImages = [
-  '/assets/photography/restaurant-3.jpeg',
-  '/assets/photography/restaurant-4.jpeg',
-  '/assets/photography/restaurant-5.jpeg',
-  '/assets/photography/restaurant-6.jpeg',
-  '/assets/photography/restaurant-7.jpeg',
-  '/assets/photography/restaurant-8.jpeg',
-];
+// PATCH 1: Image arrays from photography.json
+const restaurantShowcaseImages: string[] = photographyData.restaurant;
+const foodShowcaseImages: string[] = photographyData.food;
 
-const foodShowcaseImages = [
-  '/assets/photography/food1.jpeg',
-  '/assets/photography/food2.jpeg',
-  '/assets/photography/food3.jpeg',
-  '/assets/photography/food4.jpeg',
-];
-
-function ShowcaseSection({ id, images, imageSide, illustration, illustrationAlt, text, imageLabel, controlsLabel, previousImageLabel, nextImageLabel }: { id: string; images: string[]; imageSide: 'left' | 'right'; illustration: string; illustrationAlt: string; text: string; imageLabel: string; controlsLabel: string; previousImageLabel: string; nextImageLabel: string }) {
+// PATCH 5: eyebrow + title props added
+function ShowcaseSection({ id, images, imageSide, illustration, illustrationAlt, eyebrow, title, text, imageLabel, controlsLabel, previousImageLabel, nextImageLabel }: { id: string; images: string[]; imageSide: 'left' | 'right'; illustration: string; illustrationAlt: string; eyebrow?: string; title?: string; text: string; imageLabel: string; controlsLabel: string; previousImageLabel: string; nextImageLabel: string }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [trackOffsets, setTrackOffsets] = useState([0, 1, 2]);
   const [railShiftPx, setRailShiftPx] = useState(0);
@@ -29,7 +19,7 @@ function ShowcaseSection({ id, images, imageSide, illustration, illustrationAlt,
   const railRef = useRef<HTMLSpanElement | null>(null);
   const slideTimer = useRef<number | null>(null);
   const isSlidingRef = useRef(false);
-  const slideDurationMs = 980;
+  const slideDurationMs = 980; // mirrors --duration-slide in styles/globals.css
   const wrapIndex = (index: number) => (index + images.length) % images.length;
   const trackImages = trackOffsets.map((offset) => images[wrapIndex(activeIndex + offset)]);
   const measureSlideDistance = () => {
@@ -106,7 +96,7 @@ function ShowcaseSection({ id, images, imageSide, illustration, illustrationAlt,
   const showPrevious = () => startSlide('previous');
 
   return (
-    <section id={id} className={`showcase showcase--images-${imageSide}`}>
+    <section id={id} className={`showcase showcase--images-${imageSide} section section--compact`}>
       <div className="showcase__deck" aria-label={imageLabel}>
         <div className="showcase__preload" aria-hidden="true">
           {images.map((src) => <img key={src} src={src} alt="" loading="eager" />)}
@@ -119,12 +109,14 @@ function ShowcaseSection({ id, images, imageSide, illustration, illustrationAlt,
           </span>
         </button>
         <div className="showcase__controls" aria-label={controlsLabel}>
-          <button type="button" onClick={showPrevious} aria-label={previousImageLabel}>←</button>
-          <button type="button" onClick={showNext} aria-label={nextImageLabel}>→</button>
+          <button className="icon-button" type="button" onClick={showPrevious} aria-label={previousImageLabel}>←</button>
+          <button className="icon-button" type="button" onClick={showNext} aria-label={nextImageLabel}>→</button>
         </div>
       </div>
       <div className="showcase__copy">
         <img className="showcase__graphic" src={illustration} alt={illustrationAlt} loading="lazy" />
+        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+        {title && <h2>{title}</h2>}
         <p>{text}</p>
       </div>
     </section>
@@ -172,7 +164,25 @@ function HistoryBlueprint() {
   );
 }
 
-function HistoryDrawer({ open, onClose, title, text, closeLabel }: { open: boolean; onClose: () => void; title: string; text: string; closeLabel: string }) {
+// PATCH 9: History archive image gallery
+function HistoryGallery({ images, lang }: { images: { src: string; caption?: { sv: string; en: string }; credit?: string }[]; lang: Lang }) {
+  return (
+    <div className="history-gallery">
+      {images.map((img, i) => (
+        <figure key={i}>
+          <img src={img.src} alt={img.caption?.[lang] ?? ''} />
+          <figcaption>
+            {img.caption?.[lang] && <span>{img.caption[lang]}</span>}
+            {img.credit && <cite>{img.credit}</cite>}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  );
+}
+
+// PATCH 8: eyebrow from CMS + PATCH 9: gallery inside drawer
+function HistoryDrawer({ open, onClose, eyebrow, title, text, closeLabel, lang, images }: { open: boolean; onClose: () => void; eyebrow: string; title: string; text: string; closeLabel: string; lang: Lang; images?: { src: string; caption?: { sv: string; en: string }; credit?: string }[] }) {
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
@@ -197,14 +207,20 @@ function HistoryDrawer({ open, onClose, title, text, closeLabel }: { open: boole
     <div className={`history-drawer${open ? ' history-drawer--open' : ''}`} aria-hidden={!open}>
       <button className="history-drawer__backdrop" type="button" onClick={onClose} aria-label={closeLabel} tabIndex={open ? 0 : -1} />
       <aside id="history-drawer" className="history-drawer__panel" role="dialog" aria-modal={open} aria-labelledby="history-drawer-title" aria-describedby="history-drawer-text">
-        <button ref={closeButtonRef} className="history-drawer__close" type="button" onClick={onClose} aria-label={closeLabel} tabIndex={open ? 0 : -1}>×</button>
+        <button ref={closeButtonRef} className="history-drawer__close icon-button" type="button" onClick={onClose} aria-label={closeLabel} tabIndex={open ? 0 : -1}>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line x1="1" y1="1" x2="13" y2="13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <line x1="13" y1="1" x2="1" y2="13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </button>
         <div className="history-drawer__art" aria-hidden="true">
           <HistoryBlueprint />
         </div>
         <div className="history-drawer__copy">
-          <p className="history-drawer__eyebrow">Tehuset archive</p>
+          <p className="eyebrow history-drawer__eyebrow">{eyebrow}</p>
           <h2 id="history-drawer-title">{title}</h2>
           <p id="history-drawer-text">{text}</p>
+          {images && images.length > 0 && <HistoryGallery images={images} lang={lang} />}
         </div>
       </aside>
     </div>
@@ -217,12 +233,18 @@ export function TehusetHome({ site, menuSv, menuEn, products }: { site: SiteCont
   const [weatherKind, setWeatherKind] = useState<WeatherKind>('cloud');
   const [isHistoryDrawerOpen, setIsHistoryDrawerOpen] = useState(false);
   const menu = lang === 'sv' ? menuSv : menuEn;
+
+  // PATCH 2: restaurant copy from CMS
+  const historyCopy = site.sections.restaurant?.body?.[lang] ?? '';
+  // PATCH 3: food copy + title from CMS
+  const foodCopy = site.sections.food?.body?.[lang] ?? '';
+  // PATCH 8: drawer text (drawerText preferred, falls back to history.body)
+  const historyDrawerText = site.history?.drawerText?.[lang] ?? site.history?.body?.[lang] ?? '';
+
   const ui = {
     sv: {
       primaryNav: 'Primär navigering',
       contact: 'Kontakt',
-      about: 'Om oss',
-      history: 'Historia',
       heroImages: 'Tehuset-bilder',
       heroStatusPrefix: 'Öppet från 10 - sent',
       showcaseImages: 'Bildspel',
@@ -231,13 +253,7 @@ export function TehusetHome({ site, menuSv, menuEn, products }: { site: SiteCont
       nextImage: 'Visa nästa bild',
       elmsAlt: 'Almgrafik',
       castleAlt: 'Slottsgrafik',
-      historyCopy: 'Du hittar oss under almarna i Kungsträdgården, Stockholms vardagsrum. Kom för en varm smörgås, ett glas vin eller en lugn stund mitt i staden. Vi har hållit tekitteln varm ett tag.',
-      foodCopy: 'Vår fisksoppa är skapad av den legendariske fiskaren Jack Anthony Smith, en pärla han tog med sig från Barbados. Inspirerad av livet vid vågorna, en rätt som har rest hit, från övatten till Stockholms almar, med många provsmakningar på vägen.',
-      shopEyebrow: 'TEHUSET MERCH',
-      instagramEyebrow: 'INSTAGRAM',
       openingHours: 'Öppettider',
-      everyDay: 'Alla dagar',
-      openingTime: '10 - sent',
       findUs: 'Hitta hit',
       mapLink: 'Jag behöver en riktig karta →',
       siteBy: 'Sida av Cadree',
@@ -248,8 +264,6 @@ export function TehusetHome({ site, menuSv, menuEn, products }: { site: SiteCont
     en: {
       primaryNav: 'Primary navigation',
       contact: 'Contact',
-      about: 'About',
-      history: 'History',
       heroImages: 'Tehuset hero images',
       heroStatusPrefix: 'Open from 10 - late',
       showcaseImages: 'Image carousel',
@@ -258,13 +272,7 @@ export function TehusetHome({ site, menuSv, menuEn, products }: { site: SiteCont
       nextImage: 'Show next image',
       elmsAlt: 'Elms graphic',
       castleAlt: 'Castle graphic',
-      historyCopy: 'You’ll find us tucked under the elms in Kungsträdgården, Stockholm’s living room. Come for a warm sandwich, a glass of wine, or a soothing moment in the middle of the city. We’ve been keeping the kettle warm for a while.',
-      foodCopy: 'Our fish soup is crafted by legendary fisherman Jack Anthony Smith, a gem he brought from Barbados. Inspired by life by the swells, it’s the sort of dish that travels. From island waters to Stockholm elms, with plenty of tastings in between.',
-      shopEyebrow: 'TEHUSET MERCH',
-      instagramEyebrow: 'INSTAGRAM',
       openingHours: 'Opening Hours',
-      everyDay: 'Every day',
-      openingTime: '10 - late',
       findUs: 'Find Us',
       mapLink: 'I need a real map →',
       siteBy: 'Site by Cadree',
@@ -273,7 +281,6 @@ export function TehusetHome({ site, menuSv, menuEn, products }: { site: SiteCont
       historyDrawerClose: 'Close history',
     },
   }[lang];
-  const historyDrawerText = site.history?.drawerText?.[lang] ?? site.history?.body?.[lang] ?? ui.historyCopy;
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -357,18 +364,38 @@ export function TehusetHome({ site, menuSv, menuEn, products }: { site: SiteCont
 
   return (
     <main>
-      <section className="hero monte-hero" id="top">
+      <section className="hero section section--compact" id="top">
+        {/* PATCH 4: nav driven by site.navigation */}
         <nav className="hero__nav" aria-label={ui.primaryNav}>
-          <a href="#contact">{ui.contact}</a>
-          <a href="#about">{ui.about}</a>
-          <a href="#history" onClick={openHistoryDrawer} aria-controls="history-drawer" aria-expanded={isHistoryDrawerOpen} aria-haspopup="dialog">{ui.history}</a>
+          {site.navigation.map((item) =>
+            item.key === 'history' ? (
+              <a key={item.key} href={item.href} onClick={openHistoryDrawer} aria-controls="history-drawer" aria-expanded={isHistoryDrawerOpen} aria-haspopup="dialog">
+                {lang === 'sv' ? item.sv : item.en}
+              </a>
+            ) : (
+              <a key={item.key} href={item.href}>
+                {lang === 'sv' ? item.sv : item.en}
+              </a>
+            )
+          )}
         </nav>
-        <HistoryDrawer open={isHistoryDrawerOpen} onClose={closeHistoryDrawer} title={ui.history} text={historyDrawerText} closeLabel={ui.historyDrawerClose} />
+        <HistoryDrawer
+          open={isHistoryDrawerOpen}
+          onClose={closeHistoryDrawer}
+          eyebrow={site.history?.eyebrow?.[lang] ?? ''}
+          title={site.history?.title?.[lang] ?? ''}
+          text={historyDrawerText}
+          closeLabel={ui.historyDrawerClose}
+          lang={lang}
+          images={site.history?.images}
+        />
         <div className="hero__language">
           <LanguageToggle lang={lang} setLang={setLang} />
         </div>
         <div className="hero__logo-wrap">
           <img className="hero__logo" src="/assets/brand/tehuset-logo-red.png" alt="Tehuset" />
+          {/* PATCH 13: hero title from CMS */}
+          {site.hero.title?.[lang] && <h1 className="hero-title">{site.hero.title[lang]}</h1>}
           <p className="hero__status">
             <span>{ui.heroStatusPrefix}</span>
             <span className="hero__status-separator" aria-hidden="true">•</span>
@@ -386,27 +413,33 @@ export function TehusetHome({ site, menuSv, menuEn, products }: { site: SiteCont
         <p>{site.sections.about?.body[lang] ?? site.hero.intro[lang]}</p>
       </section>
 
+      {/* PATCHES 2, 5, 12: restaurant showcase with CMS copy, eyebrow/title, illustration */}
       <ShowcaseSection
         id="history"
         images={restaurantShowcaseImages}
         imageSide="right"
-        illustration="/assets/illustrations/elms-graphic2.png"
+        illustration={site.illustrations?.elms ?? '/assets/illustrations/elms-graphic2.png'}
         illustrationAlt={ui.elmsAlt}
-        text={ui.historyCopy}
-        imageLabel={`${ui.history} ${ui.showcaseImages}`}
+        eyebrow={site.sections.restaurant?.eyebrow?.[lang]}
+        title={site.sections.restaurant?.title?.[lang]}
+        text={historyCopy}
+        imageLabel={`${site.sections.restaurant?.eyebrow?.[lang] ?? ''} ${ui.showcaseImages}`}
         controlsLabel={ui.imageControls}
         previousImageLabel={ui.previousImage}
         nextImageLabel={ui.nextImage}
       />
 
+      {/* PATCHES 3, 5, 12: food showcase with CMS copy, eyebrow/title, illustration */}
       <ShowcaseSection
         id="food"
         images={foodShowcaseImages}
         imageSide="left"
-        illustration="/assets/illustrations/castle-graphic2.png"
+        illustration={site.illustrations?.castle ?? '/assets/illustrations/castle-graphic2.png'}
         illustrationAlt={ui.castleAlt}
-        text={ui.foodCopy}
-        imageLabel={`${site.sections.food.eyebrow?.[lang] ?? ui.showcaseImages} ${ui.showcaseImages}`}
+        eyebrow={site.sections.food?.eyebrow?.[lang]}
+        title={site.sections.food?.title?.[lang]}
+        text={foodCopy}
+        imageLabel={`${site.sections.food?.eyebrow?.[lang] ?? ui.showcaseImages} ${ui.showcaseImages}`}
         controlsLabel={ui.imageControls}
         previousImageLabel={ui.previousImage}
         nextImageLabel={ui.nextImage}
@@ -414,15 +447,22 @@ export function TehusetHome({ site, menuSv, menuEn, products }: { site: SiteCont
 
       <MenuPanel menu={menu} />
 
-      <section id="merch" className="section-block section-block--pink">
+      <section id="merch" className="section section-block section-block--pink">
         <div className="section-block__copy">
-          <h2>{site.sections.merch.title![lang]}</h2>
+          <h2>{site.sections.merch.title?.[lang] ?? ''}</h2>
           <p>{site.sections.merch.body[lang]}</p>
         </div>
         <MerchCheckout lang={lang} products={products} />
       </section>
 
-      <section id="instagram" className="section-block instagram-block">
+      {/* PATCH 10: instagram section with CMS title + body */}
+      <section id="instagram" className="section section-block instagram-block">
+        {(site.sections.instagram?.title?.[lang] || site.sections.instagram?.body?.[lang]) && (
+          <div className="section-block__copy">
+            {site.sections.instagram?.title?.[lang] && <h2>{site.sections.instagram.title[lang]}</h2>}
+            {site.sections.instagram?.body?.[lang] && <p>{site.sections.instagram.body[lang]}</p>}
+          </div>
+        )}
         <a className="instagram-lockup" href="https://www.instagram.com/tehuset/" aria-label="Tehuset Instagram" target="_blank" rel="noreferrer">
           <span className="footer__instagram instagram-lockup__mark" aria-hidden="true" />
           <span className="instagram-lockup__text">tehuset</span>
@@ -430,35 +470,54 @@ export function TehusetHome({ site, menuSv, menuEn, products }: { site: SiteCont
         <iframe title="Tehuset Instagram" src={`https://www.instagram.com/${site.instagramHandle}/embed`} loading="lazy" />
       </section>
 
-      <footer id="contact" className="footer">
+      <footer id="contact" className="footer section section--compact">
+        {/* PATCH 10: footer section body from CMS */}
+        {site.sections.footer?.body?.[lang] && (
+          <p className="footer__tagline">{site.sections.footer.body[lang]}</p>
+        )}
         <div className="footer__columns">
           <section className="footer__column" aria-labelledby="footer-contact-title">
             <h2 id="footer-contact-title">{ui.contact}</h2>
             <div className="footer__contact">
               <a href={`mailto:${site.contact.email}`}>{site.contact.email.toUpperCase()}</a>
-              <a className="footer__instagram" href="https://www.instagram.com/tehuset/" aria-label="Tehuset Instagram" target="_blank" rel="noreferrer" />
+              {/* PATCH 11: socials from CMS */}
+              {site.contact.socials.map((s) => (
+                <a
+                  key={s.label}
+                  className={s.label === 'Instagram' ? 'footer__instagram' : undefined}
+                  href={s.url}
+                  aria-label={`Tehuset ${s.label}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {s.label !== 'Instagram' && s.label}
+                </a>
+              ))}
             </div>
           </section>
 
           <section className="footer__column" aria-labelledby="footer-hours-title">
             <h2 id="footer-hours-title">{ui.openingHours}</h2>
+            {/* PATCH 7: hours from CMS */}
             <div className="footer__hours">
-              <p>{ui.everyDay}</p>
-              <p>{ui.openingTime}</p>
+              <p>{site.hours?.label?.[lang]}</p>
+              <p>{site.hours?.time}</p>
             </div>
           </section>
 
           <section className="footer__column" aria-labelledby="footer-find-title">
             <h2 id="footer-find-title">{ui.findUs}</h2>
             <address>{site.contact.address[lang]}</address>
-            <a className="footer__map-link" href="https://www.google.com/maps/search/?api=1&query=Karl%20XII%3As%20torg%209%2C%20Kungstr%C3%A4dg%C3%A5rden%2C%20Stockholm" target="_blank" rel="noreferrer">
+            {/* PATCH 6: maps URL from CMS */}
+            <a className="footer__map-link" href={site.contact.mapsUrl} target="_blank" rel="noreferrer">
               {ui.mapLink}
             </a>
           </section>
         </div>
 
+        {/* PATCH 12: footer illustration from CMS */}
         <div className="footer__mark" aria-hidden="true">
-          <img src="/assets/illustrations/strommen-graphic2-white.png" alt="" />
+          <img src={site.illustrations?.footer ?? '/assets/illustrations/strommen-graphic2-white.png'} alt="" />
         </div>
 
         <div className="footer__bottom">

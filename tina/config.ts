@@ -33,11 +33,21 @@ export default defineConfig({
             { type: 'string', name: 'phone', label: 'Phone' },
             localizedText('Address', 'address'),
             { type: 'object', name: 'socials', label: 'Social links', list: true, fields: [{ type: 'string', name: 'label', label: 'Label' }, { type: 'string', name: 'url', label: 'URL' }] },
+            { type: 'string', name: 'mapsUrl', label: 'Google Maps URL' },
+          ]},
+          { type: 'object', name: 'hours', label: 'Opening Hours', fields: [
+            localizedText('Days label', 'label'),
+            { type: 'string', name: 'time', label: 'Hours string' },
           ]},
           { type: 'object', name: 'navigation', label: 'Navigation', list: true, fields: [{ type: 'string', name: 'key', label: 'Key' }, { type: 'string', name: 'sv', label: 'Swedish label' }, { type: 'string', name: 'en', label: 'English label' }, { type: 'string', name: 'href', label: 'Anchor/link' }] },
           { type: 'object', name: 'hero', label: 'Hero', fields: [localizedText('Title', 'title'), localizedText('Intro', 'intro', 'textarea'), { type: 'image', name: 'images', label: 'Hero images', list: true }] },
           { type: 'object', name: 'sections', label: 'Sections', fields: ['about','food','restaurant','merch','reservations','instagram','footer'].map((name) => ({ type: 'object', name, label: name, fields: [localizedText('Eyebrow', 'eyebrow'), localizedText('Title', 'title'), localizedText('Body', 'body', 'textarea')] })) },
           { type: 'object', name: 'history', label: 'History archive', fields: [localizedText('Eyebrow', 'eyebrow'), localizedText('Title', 'title'), localizedText('Body', 'body', 'textarea'), localizedText('Drawer text', 'drawerText', 'textarea'), { type: 'object', name: 'images', label: 'Archive images', list: true, fields: [{ type: 'image', name: 'src', label: 'Image' }, localizedText('Caption', 'caption'), { type: 'string', name: 'credit', label: 'Credit' }] }] },
+          { type: 'object', name: 'illustrations', label: 'Illustrations', fields: [
+            { type: 'image', name: 'elms', label: 'Elms illustration' },
+            { type: 'image', name: 'castle', label: 'Castle illustration' },
+            { type: 'image', name: 'footer', label: 'Footer graphic' },
+          ]},
         ],
       },
       {
